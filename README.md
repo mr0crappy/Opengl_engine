@@ -35,7 +35,7 @@ cmake --build --preset release
 
 ```bash
 # Example (Debug mode)
-./build/debug/opengl_project
+./debug/opengl_project
 ```
 
 ##  Screenshots
