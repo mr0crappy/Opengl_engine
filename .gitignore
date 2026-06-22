@@ -1,0 +1,22 @@
+# Build
+build/
+bin/
+out/
+
+# VS Code
+.vscode/
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Generated
+*.obj
+*.exe
+*.dll
+*.pdb
+
+# Logs
+*.log
