@@ -3,6 +3,7 @@
 #include "renderer/shader.h"
 #include "renderer/vertex_array.h"
 #include "renderer/vertex_buffer.h"
+#include "renderer/index_buffer.h"
 
 
 class Application
@@ -17,4 +18,5 @@ private:
     VertexArray* VAO;
     VertexBuffer* VBO;
     Shader* shader;
+    IndexBuffer* EBO;
 };

@@ -78,10 +78,6 @@ Responsible for:
 
 ## Roadmap
 
-* Add a new camera system
-* Load models
-* A full Raytracer
-
 ### Renderer
 
 * Index Buffers (EBO)

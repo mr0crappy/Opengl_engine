@@ -19,17 +19,23 @@ void Application::Run()
     
 
     float vertices[] = {
-        -0.5f, -0.5f, 0.0f,
-     0.5f, -0.5f, 0.0f,
-     0.0f,  0.5f, 0.0f
-    } ;
+     0.5f,  0.5f, 0.0f,  // top right
+     0.5f, -0.5f, 0.0f,  // bottom right
+    -0.5f, -0.5f, 0.0f,  // bottom left
+    -0.5f,  0.5f, 0.0f   // top left 
+};
+unsigned int indices[] = {  // note that we start from 0!
+    0, 1, 3,   // first triangle
+    1, 2, 3    // second triangle
+};  
 
     VAO = new VertexArray();
     VAO->Bind();
 
     VBO = new VertexBuffer(vertices, sizeof(vertices));
-    VAO->AddAttribute(0,3,GL_FLOAT, false, 3*sizeof(float), (void*)0);
-
+    
+    EBO = new IndexBuffer(indices, 6);
+    VAO->AddAttribute(0,3,GL_FLOAT,false,3 * sizeof(float),(void*)0);
     shader = new Shader(std::string(ASSET_PATH) + "shaders/basic.vert",std::string(ASSET_PATH) +"shaders/basic.frag");
 
 
@@ -41,7 +47,7 @@ void Application::Run()
 
         shader->Bind();
         VAO->Bind();
-        glDrawArrays(GL_TRIANGLES, 0, 3);
+        glDrawElements(GL_TRIANGLES, EBO->GetCount(), GL_UNSIGNED_INT, nullptr);
         window.Update();
     }
 }
