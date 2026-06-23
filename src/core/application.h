@@ -4,6 +4,7 @@
 #include "renderer/vertex_array.h"
 #include "renderer/vertex_buffer.h"
 #include "renderer/index_buffer.h"
+#include "renderer/texture.h"
 
 
 class Application
@@ -19,4 +20,5 @@ private:
     VertexBuffer* VBO;
     Shader* shader;
     IndexBuffer* EBO;
+    Texture* texture;
 };

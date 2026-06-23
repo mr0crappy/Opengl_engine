@@ -18,11 +18,12 @@ void Application::Run()
 
     
 
-    float vertices[] = {
-     0.5f,  0.5f, 0.0f,  // top right
-     0.5f, -0.5f, 0.0f,  // bottom right
-    -0.5f, -0.5f, 0.0f,  // bottom left
-    -0.5f,  0.5f, 0.0f   // top left 
+    float vertices[] =
+{
+     0.5f,  0.5f, 0.0f, 1.0f, 1.0f,
+     0.5f, -0.5f, 0.0f, 1.0f, 0.0f,
+    -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+    -0.5f,  0.5f, 0.0f, 0.0f, 1.0f
 };
 unsigned int indices[] = {  // note that we start from 0!
     0, 1, 3,   // first triangle
@@ -35,7 +36,14 @@ unsigned int indices[] = {  // note that we start from 0!
     VBO = new VertexBuffer(vertices, sizeof(vertices));
     
     EBO = new IndexBuffer(indices, 6);
-    VAO->AddAttribute(0,3,GL_FLOAT,false,3 * sizeof(float),(void*)0);
+    VAO->AddAttribute(0,3,GL_FLOAT,false,5 * sizeof(float),(void*)0);
+    VAO->AddAttribute(1,2,GL_FLOAT,false,5 * sizeof(float),(void*)(3 * sizeof(float)));
+
+    texture = new Texture(std::string(ASSET_PATH)+"textures/container.jpg");
+    shader->Bind();
+    shader->setInt("texture1", 0);
+
+
     shader = new Shader(std::string(ASSET_PATH) + "shaders/basic.vert",std::string(ASSET_PATH) +"shaders/basic.frag");
 
 
@@ -44,6 +52,8 @@ unsigned int indices[] = {  // note that we start from 0!
         
          glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
+
+        texture->Bind();
 
         shader->Bind();
         VAO->Bind();

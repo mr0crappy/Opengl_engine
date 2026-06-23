@@ -19,6 +19,7 @@ target_include_directories(Sentinel PRIVATE
     src
     external/glad/include
     external/glm
+    external/stb
 )
 
 target_link_libraries(Sentinel PRIVATE
