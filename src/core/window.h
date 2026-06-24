@@ -1,22 +1,20 @@
 #pragma once
 
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glad/glad.h>
 
-class Window
-{
+
+class Window {
 public:
-    Window(int width, int height, const char* title);
-    ~Window();
+  Window(int width, int height, const char *title);
+  ~Window();
 
-    bool ShouldClose() const;
-    void Update();
+  bool ShouldClose() const;
+  void Update();
+  GLFWwindow *GetNativeWindow() const;
 
 private:
-    GLFWwindow* m_Window;
+  GLFWwindow *m_Window;
 
-    static void FramebufferCallback(
-        GLFWwindow* window,
-        int width,
-        int height);
+  static void FramebufferCallback(GLFWwindow *window, int width, int height);
 };
