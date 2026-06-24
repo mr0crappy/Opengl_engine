@@ -1,19 +1,59 @@
 # Sentinel Engine
 
-Sentinel is a custom game engine written in C++ using modern OpenGL. The project is being developed from the ground up as a learning-focused engine architecture with the long-term goal of supporting advanced rendering, physics, asset management, and game development systems.
+Sentinel is a custom game engine written in C++ using Modern OpenGL. The project is being developed from the ground up as a learning-focused engine architecture with the long-term goal of supporting advanced rendering, physics, asset management, scene management, and editor tooling.
 
 ## Current Features
 
+### Core
+
+* C++17
 * OpenGL 4.6 Core Profile
 * GLFW window and context management
 * GLAD OpenGL loader
-* Custom Shader abstraction
-* Custom Vertex Buffer (VBO) abstraction
-* Custom Vertex Array (VAO) abstraction
 * CMake build system
-* Basic rendering pipeline
 
+### Rendering
 
+* Custom Shader abstraction
+* Vertex Buffer Object (VBO) abstraction
+* Vertex Array Object (VAO) abstraction
+* Index Buffer Object (EBO) abstraction
+* Texture loading and binding
+* Model / View / Projection matrices
+* Depth testing
+* Wireframe rendering mode
+* Textured cube rendering
+
+### Camera
+
+* FPS-style camera
+* WASD movement
+* Mouse look
+* Scroll wheel zoom
+* Delta-time based movement
+
+### Editor
+
+* Dear ImGui integration
+* Real-time transform controls
+* Position editing
+* Rotation controls
+* Scale controls
+* FOV controls
+* Camera speed controls
+* Renderer settings panel
+* Wireframe toggle
+* Runtime statistics display
+* Editor/Game mode switching
+
+## Screenshots
+
+Currently renders a textured 3D cube with:
+
+* Free-look camera
+* Real-time transform manipulation
+* ImGui editor controls
+* Perspective projection
 
 ## Building
 
@@ -24,6 +64,8 @@ Sentinel is a custom game engine written in C++ using modern OpenGL. The project
 * OpenGL 4.6
 * GLFW
 * GLAD
+* Dear ImGui
+* GLM
 
 ### Configure
 
@@ -43,72 +85,116 @@ cmake --build build
 ./build/Sentinel
 ```
 
-## Architecture
 
-The current renderer is built around three core abstractions:
+## Implemented Systems
 
 ### Shader
 
 Responsible for:
 
-* Loading shader files
+* Reading shader files
 * Compiling shaders
-* Linking shader programs
-* Managing uniforms
+* Linking programs
+* Uniform management
 
 ### VertexBuffer
 
-Wrapper around OpenGL Vertex Buffer Objects (VBOs).
-
 Responsible for:
 
-* Creating GPU vertex buffers
-* Uploading vertex data
-* Binding and unbinding buffers
+* GPU buffer allocation
+* Vertex uploads
+* Buffer binding
 
 ### VertexArray
 
-Wrapper around OpenGL Vertex Array Objects (VAOs).
+Responsible for:
+
+* Vertex layouts
+* Attribute configuration
+* Input state management
+
+### IndexBuffer
 
 Responsible for:
 
-* Storing vertex attribute layouts
-* Associating VBOs with shader attributes
-* Managing vertex input state
+* Indexed rendering
+* Element storage
+* Draw call optimization
+
+### Texture
+
+Responsible for:
+
+* Texture loading
+* GPU texture creation
+* Texture binding
+
+### Camera
+
+Responsible for:
+
+* View matrix generation
+* Mouse look
+* Keyboard movement
+* Zoom control
 
 ## Roadmap
 
 ### Renderer
 
-* Index Buffers (EBO)
-* Texture System
-* Camera System
-* Transformations
-* Model Loading
-* Lighting
-* Shadow Mapping
-* Deferred Rendering
+* Multiple texture support
+* Material system
+* Mesh abstraction
+* Asset browser
+* Cube maps
+* Skyboxes
+* Lighting system
+* Directional lights
+* Point lights
+* Spot lights
+* Shadow mapping
+* HDR rendering
+* Deferred rendering
 * Physically Based Rendering (PBR)
 
 ### Engine
 
-* Asset Manager
-* Scene System
+* Scene system
 * Entity Component System (ECS)
-* Input System
-* Event System
+* Event system
+* Asset manager
 * Serialization
-* Editor
+* Prefabs
+* Resource hot-reloading
+
+### Editor
+
+* Scene hierarchy
+* Inspector panel
+* Asset browser
+* Transform gizmos
+* Docking layout
+* Content browser
+* Play mode
+* Project settings
 
 ### Physics
 
-* Collision Detection
-* Rigid Body Simulation
-* Character Controller
+* Collision detection
+* Rigid body simulation
+* Character controller
+* Physics debug rendering
 
 ## Goals
 
-Sentinel is intended to evolve into a fully featured game engine while serving as a deep exploration of graphics programming, engine architecture, and low-level systems development.
+Sentinel aims to evolve into a complete game engine while serving as a deep exploration of:
+
+* Graphics Programming
+* Engine Architecture
+* Rendering Pipelines
+* Physics Systems
+* Tool Development
+* Real-Time Rendering
 
 ## License
 
