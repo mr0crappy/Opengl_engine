@@ -133,3 +133,8 @@ void Shader::CheckCompileErrors(unsigned int object, const std::string &type) {
     }
   }
 }
+
+Shader::~Shader()
+{
+    glDeleteProgram(RendererID);
+}
